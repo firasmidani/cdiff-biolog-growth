@@ -31,7 +31,6 @@ python strain_enrichment_analysis.py
 
 # run linear mixed effects models
 micromamba activate cdiff-biolog-analysis
-micromamba activate R
 for i in *.r; do 
     echo "Running $i"
     Rscript *.r
