@@ -3,7 +3,7 @@
 ## Description 
 This is a project repository for the analysis of _C. difficile_ growth data under various nutritional conditions. It includes code for analyzing the microbial growth data and generating figures for related manuscript. 
 
-Data can be found on Zenodo at [10.5281/zenodo.12626878](https://10.5281/zenodo.1262687). 
+Data can be found on Zenodo at [10.5281/zenodo.12626877](https://10.5281/zenodo.1262677). 
 
 The repository contains the following folders:
 
