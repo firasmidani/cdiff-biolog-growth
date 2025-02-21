@@ -71,7 +71,7 @@ Generate figures with `sh cdiff-biolog-growth/code/generate-figures/driver.sh`. 
 
 ## Citation 
 
-Midani, F. S., Danhof, H. A., Mathew, N., Ardis, C. K., Garey, K. W., Spinler, J. K., & Britton, R. A. (2025). Emerging *Clostridioides difficile* ribotypes have divergent metabolic phenotypes. *mSystems*. [https://10.1128/msystems.01075-24](https://10.1128/msystems.01075-24)
+Midani, F. S., Danhof, H. A., Mathew, N., Ardis, C. K., Garey, K. W., Spinler, J. K., & Britton, R. A. (2025). Emerging *Clostridioides difficile* ribotypes have divergent metabolic phenotypes. *mSystems*. [https://doi.org/10.1128/msystems.01075-24](https://doi.org/10.1128/msystems.01075-24)
 
 ## Funding
 
