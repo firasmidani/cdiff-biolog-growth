@@ -12,7 +12,7 @@ The repository contains the following folders:
   - `code/generate-figures`: Code for generating the figures. It includes a driver bash script (`driver.sh`)
 
 ## Requirements
-Analyses were performed with AMiGA, Python 3.12.8, and R 4.3.31. The YAML environment files list all Python and R packages used in addition to their exact version numbers. The `driver.sh` scripts will prompt `mamba` to create these environments. If you use `conda`, you will need to replace all `mamba` instances with `conda` (see step 6 below). 
+Analyses were performed with `AMiGA`, `Python 3.12.8`, and `R 4.3.31`. The YAML environment files list all Python and R packages used in addition to their exact version numbers. The `driver.sh` scripts will prompt `mamba` to create these environments. If you use `conda`, you will need to replace all `mamba` instances with `conda` (see step 6 below). 
 
 ## Instructions for reproducing data analysis and figure generation
 
