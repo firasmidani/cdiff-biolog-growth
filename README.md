@@ -11,14 +11,14 @@ The repository contains the following folders:
   - `code/analyze-data`: Code for analyzing the data. It includes a driver bash script (`driver.sh`)
   - `code/generate-figures`: Code for generating the figures. It includes a driver bash script (`driver.sh`)
 
-## Requirements.
+## Requirements
 Analyses were performed with AMiGA, Python 3.12.8, and R 4.3.31. The YAML environment files list all Python and R packages used in addition to their exact version numbers. The `driver.sh` scripts will prompt `mamba` to create these environments. If you use `conda`, you will need to replace all `mamba` instances with `conda` (see step 6 below). 
 
 ## Instructions for reproducing data analysis and figure generation
 
 If you would like to reproduce the data analysis and figure generation, do the following:
 
-### 1) Download or clone this repository.
+### 1) Download or clone this repository
 
 ### 2) Download data and de-compress data
 
