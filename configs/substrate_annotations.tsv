@@ -1,192 +1,192 @@
-Substrate	Figure	Figure_Label	Figure_Label_Group	Label_Confidence	Tidy_Name	Color	Formula
-2-Aminoethanol	x	Amine Alcohol	Alcohols	Medium	Ethanolamine		C2H7NO
-a-Keto-Valeric Acid	x	SCFA derivative	Carboxylic Acids	Medium	alpha-Ketovaleric acid		C5H8O3
-Adonitol	x	Sugar alcohol	Alcohols	High	Adonitol		C5H12O5
-alpha-D-Glucose	x	Monosaccharide	Simple Sugars	High	Glucose		C6H12O6
-alpha-Keto-Butyric Acid	x	SCFA derivative	Carboxylic Acids	Medium	alpha-Ketobutyric acid		C4H6O3
-Arbutin	x	Glycoside	Sugar Derivatives	Medium	Arbutin	#1b9e77	C12H16O7
-beta-Hydroxy Butyric Acid	x	SCFA derivative	Carboxylic Acids	Medium	beta-Hydroxybutyric acid		C4H8O3
-Capric Acid	x	Other	Other	Low	Capric Acid		C10H20O2
-D-Arabitol	x	Sugar alcohol	Alcohols	High	Arabitol	#7570b3	C5H12O5
-D-Fructose	x	Monosaccharide	Simple Sugars	High	Fructose		C6H12O6
-D-Glucosamine	x	Amine Sugar	Sugar Derivatives	Medium	Glucosamine		C6H13NO5
-D-Mannitol	x	Sugar alcohol	Alcohols	High	Mannitol	#66a61e	C6H14O6
-D-Mannose	x	Monosaccharide	Simple Sugars	High	Mannose	#d95f02	C6H12O6
-D-Melezitose	x	Trisaccharide	Double & Triple Sugars	High	Melezitose	#e7298a	C18H32O16
-D-Ribose	x	Monosaccharide	Simple Sugars	High	Ribose	#b475b5	C5H10O5
-D-Serine	x	Amino Acid	Amino Acids	High	D-Serine		C6H14O6
-D-Sorbitol	x	Sugar alcohol	Alcohols	High	Sorbitol	#e6ab02	C6H12O6
-D-Tagatose	x	Monosaccharide	Simple Sugars	High	Tagatose		C12H22O11
-D-Trehalose	x	Disaccharide	Double & Triple Sugars	High	Trehalose	#a6761d	C5H10O5
-D-Xylose	x	Monosaccharide	Simple Sugars	High	Xylose		C5H10O5
-Fumaric Acid	x	Other	Other	Low	Fumaric Acid		C4H4O4
-Glycyl-LGlutamic Acid	x	Other	Other	Low	Gly-Gln		C7H12N2O5
-Glyoxylic Acid	x	Other	Other	Low	Glyoxylic Acid		C2H2O3
-Hydroxy-LProline	x	Amino acid derivative	Amino Acids	Medium	Hydroxyproline		C5H9NO3
-L-Isoleucine	x	Amino Acid	Amino Acids	High	Isoleucine		C6H13NO2
-L-Leucine	x	Amino Acid	Amino Acids	High	Leucine		C6H13NO2
-L-Methionine	x	Amino acid	Amino Acids	High	Methionine		C5H11NO2S
-L-Serine	x	Amino Acid	Amino Acids	High	L-Serine		C3H7NO3
-L-Threonine	x	Amino Acid	Amino Acids	High	Threonine		C4H9NO3
-N-Acetyl-beta-D Mannosamine	x	Amine Sugar	Sugar Derivatives	Medium	ManNAc		C8H15NO6
-N-Acetyl-D-Glucosamine	x	Amine Sugar	Sugar Derivatives	Medium	GlcNAc		C8H15NO6
-N-AcetylNeuraminic Acid	x	Acid Sugar	Sugar Derivatives	Medium	Sialic Acid		C11H19NO9
-Phenylethylamine	x	Other	Other	Low	Phenylethylamine		C8H11N
-Pyruvic Acid	x	Keto Acid	Carboxylic Acids	Medium	Pyruvic Acid		C3H4O3
-Salicin	x	Glucoside	Sugar Derivatives	Medium	Salicin	#666666	C13H18O7
-Succinic Acid	x	Dicarboxylic acid	Carboxylic Acids	Medium	Succinic Acid		C4H6O4
-L-Aspartic Acid							
-L-Proline							
-D-Alanine							
-L-Glutamic Acid							
-L-Asparagine							
-D-Aspartic Acid							
-L-Glutamine							
-D-Threonine							
-L-Arginine							
-Glycine							
-L-Histidine							
-L-Lysine							
-L-Phenylalanine							
-L-Valine							
-D-Glucosaminic Acid							
-N-Acetyl-D-Galactosamine							
-L-Fucose							
-L-Rhamnose							
-2-Deoxy-D Ribose							
-D-Fucose							
-D-Galactose							
-beta-D-Allose							
-D-Psicose							
-Sedoheptulosan							
-L-Sorbose							
-L-Lyxose							
-D-Arabinose							
-Dulcitol							
-i-Erythritol							
-Xylitol							
-D-Glucuronic Acid							
-D-Galacturonic Acid							
-Formic Acid							
-"D,L-Malic Acid"							
-L-Lactic Acid							
-Glycerol							
-Negative Control							
-L-Arabanose							
-D-Saccharic Acid							
-D-Gluconic Acid							
-"D,L-alpha-GlycerolPhosphate"							
-D-Glucose-6-Phospate							
-D-Galactonic Acid-gamma-Lactone							
-Tween 20							
-Acetic Acid							
-Maltose							
-D-Melibiose							
-Thymidine							
-"1,2-Propanediol"							
-Tween 40							
-alpha-Keto-Glutaric Acid							
-alpha-Methyl-D-Galactoside							
-alpha-D-Lactose							
-Lactulose							
-Sucrose							
-Uridine							
-m-Tartaric Acid							
-D-Glucose-1-Phosphate							
-D-Fructose-6-Phosphate							
-Tween 80							
-alpha-Hydroxy Glutaric Acid-gamma-Lactone							
-alpha-Hydroxy Butyric Acid							
-beta-Methyl-D Glucoside							
-Maltotriose							
-2-Deoxy Adenosine							
-Adenosine							
-Glycyl-L-Aspartic Acid							
-Citric Acid							
-m-Inositol							
-Bromo Succinic Acid							
-Propionic Acid							
-Mucic Acid							
-Glycolic Acid							
-D-Cellobiose							
-Inosine							
-Tricarballylic Acid							
-L-Alanine							
-L-Alanyl-Glycine							
-Acetoacetic Acid							
-Mono Methyl Succinate							
-Methyl Pyruvate							
-D-Malic Acid							
-L-Malic Acid							
-Glycyl-L-Proline							
-p-Hydroxy Phenyl Acetic Acid							
-m-Hydroxy Phenyl Acetic Acid							
-Tyramine							
-Glucuronamide							
-L-Galactonic Acid-gamma-Lactone							
-Chondroitin Sulfate C							
-alpha-Cyclodextrin							
-beta-Cyclodextrin							
-gamma-Cyclodextrin							
-Dextrin							
-Gelatin							
-Glycogen							
-Inulin							
-Laminarin							
-Mannan							
-Pectin							
-Amygdalin							
-L-Arabitol							
-3-0-beta-D-Galactopyranosyl-D Arabinose							
-Gentiobiose							
-L-Glucose							
-Lactitol							
-Maltitol							
-a-Methyl-D Glucoside							
-beta-Methyl-DGalactoside							
-3-Methyl Glucose							
-beta-Methyl-DGlucuronic Acid							
-alpha-Methyl-DMannoside							
-beta-Methyl-DXyloside							
-Palatinose							
-D-Raffinose							
-Stachyose							
-Turanose							
-N-Acetyl-D Glucosaminitol							
-gamma-Amino Butyric Acid							
-delta-Amino Valeric Acid							
-Butyric Acid							
-Caproic Acid							
-Citraconic Acid							
-Citramalic Acid							
-2-Hydroxy Benzoic Acid							
-4-Hydroxy Benzoic Acid							
-gamma-Hydroxy Butyric Acid							
-Itaconic Acid							
-5-Keto-D Gluconic Acid							
-D-Lactic Acid Methyl Ester							
-Malonic Acid							
-Melibionic Acid							
-Oxalic Acid							
-Oxalomalic Acid							
-Quinic Acid							
-"D-Ribono-1,4-Lactone"							
-Sebacic Acid							
-Sorbic Acid							
-Succinamic Acid							
-D-Tartaric Acid							
-L-Tartaric Acid							
-Acetamide							
-L-Alaninamide							
-N-Acetyl-LGlutamic Acid							
-L-Homoserine							
-L-Ornithine							
-L-Pyroglutamic Acid							
-"D,L-Carnitine"							
-Sec-Butylamine							
-D.L-Octopamine							
-Putrescine							
-Dihydroxy Acetone							
-"2,3-Butanediol"							
-"2,3-Butanedione"							
-3-Hydroxy 2-Butanone							
+Substrate	Figure	Substrate_Label	Figure_Label	Figure_Label_Group	Label_Confidence	Tidy_Name	Color	Formula								
+2-Aminoethanol	x	Ethanolamine	Amine Alcohol	Alcohols	Medium	Ethanolamine		C2H7NO								
+"2,3-Butanedione"	x	"2,3-Butanedione"	"2,3-Butanedione"	Other	Low	Diacetyl										
+a-Keto-Valeric Acid	x	alpha-Keto-Valeric Acid	SCFA derivative	Carboxylic Acids	Medium	alpha-Ketovaleric Acid		C5H8O3								
+Adonitol	x	Adonitol	Sugar alcohol	Alcohols	High	Adonitol		C5H12O5								
+alpha-D-Glucose	x	D-Glucose	Monosaccharide	Simple Sugars	High	Glucose	#7570b3	C6H12O6								
+alpha-Keto-Butyric Acid	x	alpha-Keto-Butyric Acid	SCFA derivative	Carboxylic Acids	Medium	alpha-Ketobutyric Acid		C4H6O3								
+beta-Methyl-D Glucoside	x	beta-Methyl-D-Glucoside	beta-Methyl-D-Glucoside	Other	Low	beta-Methyl-D-glucoside										
+Arbutin	x	Arbutin	Glycoside	Sugar Derivatives	Medium	Arbutin	#1b9e77	C12H16O7								
+beta-Hydroxy Butyric Acid	x	beta-Hydroxy-Butyric Acid	SCFA derivative	Carboxylic Acids	Medium	beta-Hydroxybutyric acid	#1b9e77	C4H8O3								
+Bromo Succinic Acid	x	Bromo Succinic Acid	Bromo Succinic Acid	Other	Low	Bromosuccinic Acid										
+Capric Acid	x	Capric Acid	Other	Other	Low	Capric Acid		C10H20O2								
+D-Arabitol	x	D-Arabitol	Sugar alcohol	Alcohols	High	Arabitol	#7570b3	C5H12O5								
+D-Fructose	x	D-Fructose	Monosaccharide	Simple Sugars	High	Fructose	#b36666	C6H12O6								
+D-Glucosamine	x	D-Glucosamine	Amine Sugar	Sugar Derivatives	Medium	Glucosamine	#f3969f	C6H13NO5								
+D-Mannitol	x	D-Mannitol	Sugar alcohol	Alcohols	High	Mannitol	#66a61e	C6H14O6								
+D-Mannose	x	D-Mannose	Monosaccharide	Simple Sugars	High	Mannose	#d95f02	C6H12O6								
+D-Melezitose	x	D-Melezitose	Trisaccharide	Double & Triple Sugars	High	Melezitose	#e7298a	C18H32O16								
+D-Ribose	x	D-Ribose	Monosaccharide	Simple Sugars	High	Ribose	#b475b5	C5H10O5								
+D-Serine	x	D-Serine	Amino Acid	Amino Acids	High	D-Serine		C6H14O6								
+D-Sorbitol	x	D-Sorbitol	Sugar alcohol	Alcohols	High	Sorbitol	#e6ab02	C6H12O6								
+D-Tagatose	x	D-Tagatose	Monosaccharide	Simple Sugars	High	Tagatose	#b475b5	C12H22O11								
+D-Trehalose	x	D-Trehalose	Disaccharide	Double & Triple Sugars	High	Trehalose	#80b1d3	C5H10O5								
+D-Xylose	x	D-Xylose	Monosaccharide	Simple Sugars	High	Xylose		C5H10O5								
+Fumaric Acid	x	Fumaric Acid	Other	Other	Low	Fumaric Acid		C4H4O4								
+Glycyl-LGlutamic Acid	x	Glycyl-L-Glutamic Acid	Dipeptide	Dipeptides	Medium	Gly-Gln		C7H12N2O5								
+Glyoxylic Acid	x	Glyoxylic Acid	Other	Other	Low	Glyoxylic Acid		C2H2O3								
+Hydroxy-LProline	x	Hydroxy-L-Proline	Amino acid derivative	Amino Acids	Medium	Hydroxyproline		C5H9NO3								
+L-Isoleucine	x	L-Isoleucine	Amino Acid	Amino Acids	High	Isoleucine		C6H13NO2								
+L-Leucine	x	L-Leucine	Amino Acid	Amino Acids	High	Leucine	#a6761d	C6H13NO2								
+L-Methionine	x	L-Methionine	Amino acid	Amino Acids	High	Methionine		C5H11NO2S								
+L-Serine	x	L-Serine	Amino Acid	Amino Acids	High	L-Serine		C3H7NO3								
+L-Threonine	x	L-Threonine	Amino Acid	Amino Acids	High	L-Threonine		C4H9NO3								
+D-Threonine	x	D-Threonine	Amino acid	Amino Acids	High	D-Threonine		C4H9NO3								
+N-Acetyl-beta-D Mannosamine	x	N-Acetyl-Beta-D-Mannosamine	Amine Sugar	Sugar Derivatives	Medium	ManNAc		C8H15NO6								
+N-Acetyl-D-Glucosamine	x	N-Acetyl-D-Glucosamine	Amine Sugar	Sugar Derivatives	Medium	GlcNAc	#e6ab02	C8H15NO6								
+N-AcetylNeuraminic Acid	x	N-Acetyl-Neuraminic Acid	Acid Sugar	Sugar Derivatives	Medium	Neu5Ac	#e6ab02	C11H19NO9								
+Phenylethylamine	x	Phenylethylamine	Other	Other	Low	Phenylethylamine		C8H11N								
+Pyruvic Acid	x	Pyruvic Acid	Keto Acid	Carboxylic Acids	Medium	Pyruvic Acid		C3H4O3								
+Salicin	x	Salicin	Glucoside	Sugar Derivatives	Medium	Salicin	#666666	C13H18O7								
+Succinic Acid	x	Succinic Acid	Dicarboxylic Acid	Carboxylic Acids	Medium	Succinic Acid		C4H6O4								
+Glycyl-L-Aspartic Acid	x	Glycol-L-Aspartic Acid	Dipeptide	Dipeptides	Medium	Gly-Asp		C6H10N2O5								
+D-Cellobiose	x	D-Cellobiose	Disaccharide	Double & Triple Sugars	High	Cellobiose		C12H22O11								
+Glycyl-L-Proline	x	Glycy-L-Proline	Dipeptide	Dipeptides	Medium	Gly-Pro		C7H12N2O3								
+Formic Acid	x	Formic Acid	Carboxylic Acid	Carboxylic Acids	Medium	Formic Acid		CO2H2								
+Mono Methyl Succinate	x	Mono-Methyl Succinate	Dicarboxylic Acid	Carboxylic Acids	Medium	Monomethyl Succinate		C5H8O4								
+Methyl Pyruvate	x	Methyl Pyruvate	Other	Other	Low	Methyl Pyruvate		C4H6O3								
+alpha-Hydroxy Butyric Acid	x	alpha-Hydroxy-Butyric Acid	SCFA derivative	Carboxylic Acids	Medium	alpha-Hydroxybutyric acid		C4H8O3								
+"1,2-Propanediol"																
+2-Deoxy Adenosine																
+2-Deoxy-D Ribose																
+2-Hydroxy Benzoic Acid																
+"2,3-Butanediol"																
+3-0-beta-D-Galactopyranosyl-D Arabinose																
+3-Hydroxy 2-Butanone																
+3-Methyl Glucose																
+4-Hydroxy Benzoic Acid																
+5-Keto-D Gluconic Acid																
+a-Methyl-D Glucoside																
+Acetamide																
+Acetic Acid																
+Acetoacetic Acid																
+Adenosine																
+alpha-Cyclodextrin																
+alpha-D-Lactose																
+alpha-Hydroxy Glutaric Acid-gamma-Lactone																
+alpha-Keto-Glutaric Acid																
+alpha-Methyl-DMannoside																
+Amygdalin																
+beta-Cyclodextrin																
+beta-D-Allose																
+alpha-Methyl-D-Galactoside																
+beta-Methyl-DGalactoside																
+beta-Methyl-DGlucuronic Acid																
+beta-Methyl-DXyloside																
+Butyric Acid																
+Caproic Acid																
+Chondroitin Sulfate C																
+Citraconic Acid																
+Citramalic Acid																
+Citric Acid																
+D-Alanine																
+D-Arabinose																
+D-Aspartic Acid																
+D-Fructose-6-Phosphate																
+D-Fucose																
+D-Galactonic Acid-gamma-Lactone																
+D-Galactose																
+D-Galacturonic Acid																
+D-Gluconic Acid																
+D-Glucosaminic Acid																
+D-Glucose-1-Phosphate																
+D-Glucose-6-Phospate																
+D-Glucuronic Acid																
+D-Lactic Acid Methyl Ester																
+D-Malic Acid																
+D-Melibiose																
+D-Psicose																
+D-Raffinose																
+"D-Ribono-1,4-Lactone"																
+D-Saccharic Acid																
+D-Tartaric Acid																
+"D,L-alpha-GlycerolPhosphate"																
+"D,L-Carnitine"																
+"D,L-Malic Acid"																
+D.L-Octopamine																
+delta-Amino Valeric Acid																
+Dextrin																
+Dihydroxy Acetone																
+Dulcitol																
+gamma-Amino Butyric Acid																
+gamma-Cyclodextrin																
+gamma-Hydroxy Butyric Acid																
+Gelatin																
+Gentiobiose																
+Glucuronamide																
+Glycerol																
+Glycine																
+Glycogen																
+Glycolic Acid																
+i-Erythritol																
+Inosine																
+Inulin																
+Itaconic Acid																
+L-Alaninamide																
+L-Alanine																
+L-Alanyl-Glycine																
+L-Arabanose																
+L-Arabitol																
+L-Arginine																
+L-Asparagine																
+L-Aspartic Acid																
+L-Fucose																
+L-Galactonic Acid-gamma-Lactone																
+L-Glucose																
+L-Glutamic Acid																
+L-Glutamine																
+L-Histidine																
+L-Homoserine																
+L-Lactic Acid																
+L-Lysine																
+L-Lyxose																
+L-Malic Acid																
+L-Ornithine																
+L-Phenylalanine																
+L-Proline																
+L-Pyroglutamic Acid																
+L-Rhamnose																
+L-Sorbose																
+L-Tartaric Acid																
+L-Valine																
+Lactitol																
+Lactulose																
+Laminarin																
+m-Hydroxy Phenyl Acetic Acid																
+m-Inositol																
+m-Tartaric Acid																
+Malonic Acid																
+Maltitol																
+Maltose																
+Maltotriose																
+Mannan																
+Melibionic Acid																
+Mucic Acid																
+N-Acetyl-D Glucosaminitol																
+N-Acetyl-D-Galactosamine																
+N-Acetyl-LGlutamic Acid																
+Negative Control																
+Oxalic Acid																
+Oxalomalic Acid																
+p-Hydroxy Phenyl Acetic Acid																
+Palatinose																
+Pectin																
+Propionic Acid																
+Putrescine																
+Quinic Acid																
+Sebacic Acid																
+Sec-Butylamine																
+Sedoheptulosan																
+Sorbic Acid																
+Stachyose																
+Succinamic Acid																
+Sucrose																
+Thymidine																
+Tricarballylic Acid																
+Turanose																
+Tween 20																
+Tween 40																
+Tween 80																
+Tyramine																
+Uridine																
+Xylitol																
