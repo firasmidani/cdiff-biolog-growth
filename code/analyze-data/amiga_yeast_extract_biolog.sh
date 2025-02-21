@@ -1,20 +1,15 @@
 #!/bin/bash
 
-# confirm conda/python locations/versions
-echo -e "\nCURRENT ENVIRONMENT\n"
-which python
-echo $MAMBA_ROOT_PREFIX
-which amiga
-
 # define work environment
-echo -e "\nCURRENT ENVIRONMENT VERSIONS\n"
-echo -e "Python:\t"$(python --version | awk '{print $2}')
-echo -e "Mamba:\t"$(mamba --version)
+printf "\nKEY ENVIRONMENT VERSIONS AND ALIASES\n"
+printf "python %s\n" "$(python --version | awk '{print $2}')"
+printf "%s\n" "$(mamba --version)"
+printf "%s\n" "$(alias amiga)"
 
 # list environment packages and versions
-echo -e "\nCURRENT MAMBA LOADED TOOLS\n"
+printf "\nCURRENT MAMBA LOADED TOOLS\n"
 mamba list
-echo -e "\n" 
+printf "%s\n"
 
 # define work environment
 work_dir="../../amiga-yeast-extract-biolog"

@@ -1,21 +1,15 @@
 #!/bin/bash
 
-# confirm conda/python locations/versions
-echo "\nCURRENT ENVIRONMENT\n"
-which python
-echo $MAMBA_ROOT_PREFIX
-which amiga
-
 # define work environment
-echo "\nCURRENT ENVIRONMENT VERSIONS\n"
-echo "Python:\t"$(python --version | awk '{print $2}')
-echo "Mamba:\t"$(mamba --version)
+printf "\nKEY ENVIRONMENT VERSIONS AND ALIASES\n"
+printf "python %s\n" "$(python --version | awk '{print $2}')"
+printf "%s\n" "$(mamba --version)"
+printf "%s\n" "$(alias amiga)"
 
 # list environment packages and versions
-echo "\nCURRENT MAMBA LOADED TOOLS\n"
+printf "\nCURRENT MAMBA LOADED TOOLS\n"
 mamba list
-echo "\n" 
-
+printf "%s\n"
 # define work environment
 work_dir="../../amiga-clade-5"
 
