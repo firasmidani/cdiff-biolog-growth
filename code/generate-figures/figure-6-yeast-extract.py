@@ -11,7 +11,7 @@ from utils import *
 ## BIOLOG FIGURES
 
 # read biolog data
-df_biolog = read_csv("../../amiga-yeast-extract-biolog/summary/merged_summary_norm_div_by_median.txt")
+df_biolog = read_csv("../../amiga-yeast-extract-biolog/summary/merged_summary_norm_div.txt")
 
 # indicate low vs high yeast extract based on plate ID
 get_extract_conc = lambda ii: ii.split('_')[1].replace('YT1','').replace('YT','')
@@ -84,7 +84,12 @@ for ax in axes:
     ax.set_ylabel(None)
     ax.enlarge_tick_labels(fontsize=12)
 
+# tidy y-axis labels
+plt.setp(axes[0],yticklabels=tidy_labels(axes[0].get_yticklabels()))
+plt.setp(axes[1],yticklabels=tidy_labels(axes[1].get_yticklabels()))
+
+
 # SAVE FIGURE
 plt.subplots_adjust(hspace=0.4)
-plt.savefig(f"{dir_figure}/main/figure-6-yeast-extract.png",dpi=300,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/main/figure-6-yeast-extract.png",dpi=600,bbox_inches='tight')
 plt.close()

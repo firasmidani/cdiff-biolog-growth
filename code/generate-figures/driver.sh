@@ -1,7 +1,17 @@
 #!/bin/sh
 
-# Create the necessary conda environment (with conda, mamba, or micromamba)
-# micromamba create -n cdiff-biolog-analysis -f ../environment-analysis.yml
+# Create the necessary conda environment (with conda, mamba, or mamba)
+printf "\n~~~~ Checking for conda environments ~~~~\n\n"
+
+ENV_NAME="cdiff-biolog-python"
+YML_FILE="environment-python.yml"
+
+if mamba env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
+    echo "Conda environment '$ENV_NAME' already exists."
+else
+    echo "Creating conda environment '$ENV_NAME' from $YML_FILE..."
+    mamba create -n "$ENV_NAME" -f ../"$YML_FILE"
+fi
 
 # change to location of driver script
 cd "$(dirname "$0")"
@@ -10,15 +20,17 @@ cd "$(dirname "$0")"
 source ~/.bashrc
 
 # activate the conda environment
-micromamba activate coffee
+mamba activate cdiff-biolog-python
 
 # create figure output directorty
 mkdir -p ../../figures
+mkdir -p ../../figures/{main,other,supp}
 
 # iterate through and execute all python scripts
 for i in *figure*.py; do
-    echo "Running $i"
+    printf "\n~~~~ Running $i ~~~~\n"
     python $i
-    echo 
 done
+
+printf "\nAll figures were generated!\n\n"
 

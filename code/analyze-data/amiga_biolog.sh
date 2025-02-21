@@ -1,27 +1,20 @@
-#!/bin/zsh
-
-# necessary to access micromamba
-source ~/.bashrc
-
-# see https://github.com/firasmidani/amiga for environement settings
-micromamba activate cdiff-biolog-amiga
-alias amiga="python /Users/midani/Programs/repos/amiga/amiga.py"
+#!/bin/bash
 
 # confirm conda/python locations/versions
-echo -e "\nCURRENT ENVIRONMENT\n"
+echo "\nCURRENT ENVIRONMENT\n"
 which python
 echo $MAMBA_ROOT_PREFIX
 which amiga
 
 # define work environment
-echo -e "\nCURRENT ENVIRONMENT VERSIONS\n"
-echo -e "Python:\t"$(python --version | awk '{print $2}')
-echo -e "Micromamba:\t"$(micromamba --version)
+echo "\nCURRENT ENVIRONMENT VERSIONS\n"
+echo "Python:\t"$(python --version | awk '{print $2}')
+echo "Mamba:\t"$(mamba --version)
 
 # list environment packages and versions
-echo -e "\nCURRENT MICROMABA LOADED TOOLS\n"
-micromamba list
-echo -e "\n" 
+echo "\nCURRENT MAMBA LOADED TOOLS\n"
+mamba list
+echo "\n" 
 
 # define work environment
 work_dir="../../amiga-biolog"
@@ -69,4 +62,5 @@ amiga normalize \
 mv "${work_dir}/summary/merged_summary_normalized.txt" "${work_dir}/summary/merged_summary_norm_div.txt"
 
 # normalize norm_k by the median norm_k in each plate and (if True) remove low-quality plates and wells
-python ./normalize-amiga-output-by-medians.py "${work_dir}" True
+python ./normalize-amiga-output-by-medians.py "${work_dir}" True k_lin
+python ./normalize-amiga-output-by-medians.py "${work_dir}" True gr

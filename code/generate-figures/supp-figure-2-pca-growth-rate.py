@@ -13,11 +13,11 @@ from adjustText import adjust_text
 from utils import *
 
 # READ DATA
-df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt")
+df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_gr.txt")
 
 # summary metric of interest: 
 # subtraction-normalized carrying capacity in the untransformed lienar scale
-param = 'norm(k_lin)'
+param = 'norm(gr)'
 
 # the following are variables needed for this figure
 varbs = ['Strain_ID','Ribotype','Clade','Substrate',param]
@@ -198,11 +198,11 @@ for ax, pcs in zip([ax_00,ax_02],[[0,1],[2,3]]):
         ax.set_ylabel(base_label.format(pcs[1]+1, prop_var[pcs[1]]),fontsize=fontsize)
     
     # adjust clade legend axis limits
-    ax_00.set_xlim([-0.35,0.35])
-    ax_00.set_ylim([-0.35,0.25])
+    ax_00.set_xlim([-0.40,0.40])
+    ax_00.set_ylim([-0.35,0.35])
 
-    ax_02.set_xlim([-0.35,0.35])
-    ax_02.set_ylim([-0.35,0.25])
+    ax_02.set_xlim([-0.40,0.40])
+    ax_02.set_ylim([-0.35,0.35])
 
     ax_legend_clades.set_xlim([-5,40])
     ax_legend_clades.set_ylim([0,0.9])
@@ -264,11 +264,11 @@ for ax, pcs in zip([ax_10,ax_12],[[0,1],[2,3]]):
         ax.set_ylabel(base_label.format(pcs[1]+1, prop_var[pcs[1]]),fontsize=fontsize)
 
 # adjust clade legend axis limits
-ax_10.set_xlim([-0.35,0.35])
-ax_10.set_ylim([-0.35,0.25])
+ax_10.set_xlim([-0.40,0.40])
+ax_10.set_ylim([-0.35,0.35])
 
-ax_12.set_xlim([-0.25,0.35])
-ax_12.set_ylim([-0.35,0.25])
+ax_12.set_xlim([-0.40,0.40])
+ax_12.set_ylim([-0.35,0.35])
 
 # ~~~~~~~~~~~~ Legend for ribotypes grouped by clade  ~~~~~~~~~~~~
 
@@ -341,7 +341,7 @@ for ax, pcs in zip([ax_20,ax_22], [[0,1],[2,3]]):
     #   then get substrates that are one of the top 6 contributors for either of the components
     top_loadings = df_loadings.iloc[:,[pcs[0],pcs[1]]]
     top_loadings = top_loadings[(top_loadings.abs().rank(ascending=False) < 6).any(axis=1)]
-    
+
     tmp = df_loadings.iloc[:,[0,1,2,3]]
     tmp = tmp.abs().rank(ascending=False)
 
@@ -417,5 +417,5 @@ for ax, pcs in zip([ax_20,ax_22], [[0,1],[2,3]]):
     ax.set_ylabel(base_label.format(pcs[1]+1, prop_var[pcs[1]]),fontsize=fontsize)
 
 # save plot
-plt.savefig(f"{dir_figure}/main/figure-2-pca-norm-k-lin.png",dpi=600,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/supp/supp-figure-2-pca-growth-rate.png",dpi=600,bbox_inches='tight')
 plt.close()

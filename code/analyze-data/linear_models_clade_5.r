@@ -37,18 +37,31 @@ df <- df %>%
 df = df[df$Substrate %in% substrates,]
 df = df[df$Clade_Group %in% c("Clade_5","Non_Clade_5"),]
 
-# question: does substrate group differentially impact growth by clade 5?
+# reduce to medians of technical replicates
+df <- df %>%
+  group_by(Substrate, Clade_Group, Substrate_Group, Isolate) %>%
+  summarize(Carrying_Capacity = median(Carrying_Capacity, na.rm = TRUE), .groups = "drop")
 
-formula_full = 'Carrying_Capacity ~ Clade_Group*Substrate_Group + Substrate + (1|Isolate)'
-formula_no_intxn = 'Carrying_Capacity ~ Clade_Group + Substrate_Group + Substrate + (1|Isolate)'
-formula_no_clade = 'Carrying_Capacity ~ Substrate_Group + Substrate + (1|Isolate)'
+# ensure that certain variables are treated as factors
+df$Substrate <- as.factor(df$Substrate)
+df$Substrate_Group <- as.factor(df$Substrate_Group)
+df$Clade_Group <- as.factor(df$Clade_Group)
 
+df$interaction <- (df$Substrate_Group == "Simple_Sugar") * (df$Clade_Group == "Clade_5")
+
+# define linear mixed effects models
+formula_full = 'Carrying_Capacity ~ interaction + Substrate_Group + Clade_Group + (1|Substrate) + (1|Isolate)'
+formula_no_intxn = 'Carrying_Capacity ~ Substrate_Group + Clade_Group + (1|Substrate)  + (1|Isolate)'
+formula_no_clade = 'Carrying_Capacity ~ Substrate_Group + (1|Substrate) + (1|Isolate)'
+
+# run models
 model_full = lmer(formula_full, data=df, REML=FALSE)
 model_no_intxn = lmer(formula_no_intxn, data=df, REML=FALSE)
 model_no_clade = lmer(formula_no_clade, data=df, REML=FALSE)
 res_anova_intxn <- anova(model_full,model_no_intxn) %>% as.data.frame()
 res_anova_clade <- anova(model_no_intxn,model_no_clade) %>% as.data.frame()
 
+# display results
 cat('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 cat('\nFull Model')
 cat('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
@@ -58,38 +71,34 @@ cat('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 cat('\nRemove interaction term')
 cat('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
 print(model_no_intxn)
+print(res_anova_intxn)
 
 cat('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 cat('\nRemove clade group term')
 cat('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
 print(model_no_clade)
+print(res_anova_clade)
 cat('\n\n')
 
-# store anova results in excel worksheet
+
+# store anova/tukey results in excel worksheet
 worksheet <- "../../tables/linear_models_clade_5.xlsx"
-write.xlsx(res_anova_intxn, file=worksheet, sheetName="main_intxn", row.names=FALSE)
-write.xlsx(res_anova_clade, file=worksheet, sheetName="main_clade", row.names=FALSE,append=TRUE)
+write.xlsx(res_anova_clade, file=worksheet, sheetName="LMM-ANOVA-Clade", row.names=FALSE)
+write.xlsx(res_anova_intxn, file=worksheet, sheetName="LMM-ANOVA-Interaction", row.names=FALSE,append=TRUE)
 
 # question: does clade 5 grow differentially on each individual substrate?
-
-formula_full = 'Carrying_Capacity ~ Clade_Group + (1|Isolate)'
-formula_null = 'Carrying_Capacity ~ (1|Isolate)'
+# run two-sided Student's t-test
 
 p_values <- numeric()
-
+substrates <- unique(df$Substrate)
 for (substrate in substrates) {
 
-    df_substrate = df[df$Substrate==substrate,]
-
-    model_full = lmer(formula_full, data=df_substrate, REML=FALSE)
-    model_null = lmer(formula_null, data=df_substrate, REML=FALSE)
-    res_anova <- anova(model_full,model_null) %>% as.data.frame()
+    df_stats = df[df$Substrate == substrate,]
+    res <- df_stats %>% do(te=t.test(Carrying_Capacity ~ Clade_Group,alternative='two.sided',var.equal=TRUE,data=.))
 
     # get and store p-value
-    p_value <- res_anova$`Pr(>Chisq)`[2]
+    p_value <- res$te[[1]]$p.value
     p_values <- c(p_values, p_value)
-
-    write.xlsx(res_anova, file=worksheet, sheetName=substrate, row.names=FALSE,append=TRUE)
 }
 
 # FDR-correction of p-values
@@ -101,5 +110,10 @@ df_pvalues <- data.frame(
    q_value  = q_values
 )
 
+cat('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+cat('\nUnivariate test for each substrate')
+cat('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
 print(df_pvalues)
 cat('\n\n')
+
+write.xlsx(df_pvalues, file=worksheet, sheetName='T-tests-All', row.names=FALSE,append=TRUE)

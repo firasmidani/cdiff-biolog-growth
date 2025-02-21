@@ -14,7 +14,7 @@ from utils import *
 # ~~~~ DATA FOR TOP BIOLOG PANEL ~~~~~
 
 # READ DATA
-df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median.txt")
+df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt")
 
 # summary metric of interest: 
 # subtraction-normalized carrying capacity in the untransformed lienar scale
@@ -39,7 +39,7 @@ df_meta = df_meta.set_index('Strain_ID')
 # IDENTIFY SUBSTRATES OF INTEREST
 
 # read enrichment analysis
-df_results = read_csv('../../tables/strain_enrichment_analysis.tsv')
+df_results = read_csv('../../tables/strain_enrichment_analysis_norm_k_lin.tsv')
 
 # focus on significant enrichment for emerging ribotypes
 cond_1 = df_results['FDR q-val'] < 0.05
@@ -167,7 +167,7 @@ ax_top.set_ylabel('Normalized Carrying Capacity',fontsize=14)
 
 # adjust legend
 handles, labels = ax_top.get_legend_handles_labels()
-ax_top.legend(ncols=3)
+ax_top.legend(ncols=3,fontsize=14)
 
 # COLOR SUBSTRATES BASED ON SIGNIFICANCE 
 
@@ -222,7 +222,7 @@ kwargs_boxplot = {
 }
 
 kwargs_swarmplot = {
-    's':6,
+    's':5.5,
     'palette':{
         "RT255":"darkmagenta",
         "Other":"Gray"
@@ -310,6 +310,18 @@ ax_b0.set_title('Rich Media',fontsize=fontsize,y=1.02)
 ax_b1.set_title('Minimal Media',fontsize=fontsize,y=1.02)
 ax_b2.set_title('Minimal Media + Fructose',fontsize=fontsize,y=1.02)
 ax_b3.set_title('Minimal Media + Ribose',fontsize=fontsize,y=1.02)
+
+# add asterisks (based on p-values from linear_models_ribotype_255.r)
+ax_b0.text(0.5,0.90,'NS',va='bottom',ha='center',fontdict={'fontsize':15})
+ax_b1.text(0.5,0.45,'NS',va='bottom',ha='center',fontdict={'fontsize':15})
+
+ax_b2.text(0,0.75,'*',va='top',ha='center',fontdict={'fontsize':35})
+ax_b2.text(1,0.75,'*',va='top',ha='center',fontdict={'fontsize':35})
+ax_b2.text(2,0.70,'NS',va='bottom',ha='center',fontdict={'fontsize':15})
+
+ax_b3.text(0,0.40,'NS',va='bottom',ha='center',fontdict={'fontsize':15})
+ax_b3.text(1,0.45,'*',va='top',ha='center',fontdict={'fontsize':35})
+ax_b3.text(2,0.45,'*',va='top',ha='center',fontdict={'fontsize':35})
 
 # save plot
 plt.savefig(f"{dir_figure}/main/figure-4-emerging-lineages.png",dpi=600,bbox_inches='tight')

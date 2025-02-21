@@ -119,7 +119,7 @@ for filename in ['11062021-001','11062021-002']:
 
     # format plate layout to tidy layout
     tmp_dat = tmp_dat.unstack().dropna().to_frame().reset_index()
-    tmp_dat = tmp_dat.rename(columns={'level_0':'Column','<>':'Row',0:'OD600'})
+    tmp_dat = tmp_dat.rename(columns={'level_0':'Column','<>':'Row',0:'OD620'})
 
     # create Well ID which is necessary for merging with meta-data
     tmp_dat['Well_ID'] = tmp_dat.apply(lambda x: x['Row']+x['Column'],axis=1)
@@ -144,12 +144,12 @@ df_plot = pd.concat([cond_1,cond_2])
 grouped_bar_plot(
     ax = axes[0,0],
     df = subsetDf(df_plot,{'Isolate':'PRB827','Washing':'No'}),
-    metric = "OD600"
+    metric = "OD620"
 )
 grouped_bar_plot(
     ax = axes[1,0],
     df = subsetDf(df_plot,{'Isolate':'PRB827','Washing':'Yes'}),
-    metric = "OD600"
+    metric = "OD620"
 )
 
 # ~~~ read CD2015 (RT027) data ~~~
@@ -168,7 +168,7 @@ for filename in ['11062021-003','11062021-004']:
     tmp_dat = tmp_dat.iloc[:,[0,col]]
 
     # format plate layout to tidy layout
-    tmp_dat = tmp_dat.rename(columns={0:'Well_ID',col:'OD600'})
+    tmp_dat = tmp_dat.rename(columns={0:'Well_ID',col:'OD620'})
     tmp_dat = tmp_dat.set_index('Well_ID')
 
     # merge and handle missing values
@@ -191,12 +191,12 @@ df_plot = pd.concat([cond_1,cond_2])
 grouped_bar_plot(
     ax = axes[0,1],
     df = subsetDf(df_plot,{'Isolate':'PRB268','Washing':'No'}),
-    metric = "OD600"
+    metric = "OD620"
 )
 grouped_bar_plot(
     ax = axes[1,1],
     df = subsetDf(df_plot,{'Isolate':'PRB268','Washing':'Yes'}),
-    metric = "OD600"
+    metric = "OD620"
 )
 
 # adjust axes and legend title
@@ -211,10 +211,10 @@ axes[1,0].set_title(f"M68 (RT017) washed inocula",fontsize=12,y=1.02)
 axes[0,1].set_title(f"CD2015 (RT027) unwashed inocula",fontsize=12,y=1.02)
 axes[1,1].set_title(f"CD2015 (RT027) washed inocula",fontsize=12,y=1.02)
 
-axes[0,0].set_ylabel(f"OD600 at 17 hours",fontsize=12)
-axes[1,0].set_ylabel(f"OD600 at 17 hours",fontsize=12)
+axes[0,0].set_ylabel(f"OD620 at 17 hours",fontsize=12)
+axes[1,0].set_ylabel(f"OD620 at 17 hours",fontsize=12)
 
 # SAVE FIGURE
 plt.subplots_adjust(hspace=0.3,wspace=0.1)
-plt.savefig(f"{dir_figure}/supp/supp-figure-5-yeast-extract.png",dpi=300,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/supp/supp-figure-7-yeast-extract.png",dpi=600,bbox_inches='tight')
 plt.close()

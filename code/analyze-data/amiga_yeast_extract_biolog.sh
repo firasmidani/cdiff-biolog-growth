@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# necessary to access micromamba
-source ~/.bashrc
-
-# see https://github.com/firasmidani/amiga for environement settings
-micromamba activate amiga
-alias amiga="python /Users/midani/Programs/repos/amiga/amiga.py"
-
 # confirm conda/python locations/versions
 echo -e "\nCURRENT ENVIRONMENT\n"
 which python
@@ -16,11 +9,11 @@ which amiga
 # define work environment
 echo -e "\nCURRENT ENVIRONMENT VERSIONS\n"
 echo -e "Python:\t"$(python --version | awk '{print $2}')
-echo -e "Micromamba:\t"$(micromamba --version)
+echo -e "Mamba:\t"$(mamba --version)
 
 # list environment packages and versions
-echo -e "\nCURRENT MICROMABA LOADED TOOLS\n"
-micromamba list
+echo -e "\nCURRENT MAMBA LOADED TOOLS\n"
+mamba list
 echo -e "\n" 
 
 # define work environment
@@ -68,5 +61,5 @@ amiga normalize \
 
 mv "${work_dir}/summary/merged_summary_normalized.txt" "${work_dir}/summary/merged_summary_norm_div.txt"
 
-# normalize norm_k by the  median norm_k in each plate 
+# normalize norm_k by the median norm_k in each plate 
 python ./normalize-amiga-output-by-medians.py "${work_dir}" False

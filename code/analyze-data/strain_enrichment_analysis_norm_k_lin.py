@@ -7,7 +7,7 @@ import pandas as pd
 
 # READ DATA
 df_summ = pd.read_csv(
-    "../../amiga-biolog/summary/merged_summary_norm_sub_by_median.txt",
+    "../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt",
     sep='\t',header=0,index_col=0,low_memory=False
     )
 
@@ -87,5 +87,5 @@ for substrate in substrates:
 df_results = pd.concat(ls_results)
 
 # save results
-df_results.to_csv('../../tables/strain_enrichment_analysis.tsv',sep="\t")
+df_results.to_csv('../../tables/strain_enrichment_analysis_norm_k_lin.tsv',sep="\t")
 

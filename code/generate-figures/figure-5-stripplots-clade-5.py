@@ -145,6 +145,10 @@ for ax, substrate in zip(np.ravel(axes),order_subs):
 # adjust figure whitespace
 plt.subplots_adjust(hspace=0.5, wspace=0.7)
 
+# add asterisks (based on p-values from linear_models_clade_5.r)
+for ax in np.ravel(axes):
+    ax.text(0.5,0.49,'NS',va='top',ha='center',fontdict={'fontsize':10})
+
 # SAVE FIGURE
-plt.savefig(f"{dir_figure}/main/figure-5-stripplots-clade-5.png",dpi=300,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/main/figure-5-stripplots-clade-5.png",dpi=600,bbox_inches='tight')
 plt.close()

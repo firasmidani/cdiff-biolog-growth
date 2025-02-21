@@ -73,6 +73,7 @@ if __name__ == "__main__":
     # READ ARGUMENTS
     work_dir = sys.argv[1]
     qc = str(sys.argv[2])
+    varb = str(sys.argv[3])
 
     # PARSE QUALITY CHECK (QC) ARGUMENT
     if (qc == "True") or (qc == "1"): qc = True
@@ -108,10 +109,10 @@ if __name__ == "__main__":
 
     # NORMALIZE SUMMARY METRICS BY MEDIAN WELLS
 
-    # apply functions
-    df_summ_renorm_sub = renormalize_summary_metrics(df_summ,varb="k_lin",norm_ref="median",method="sub")
-    df_summ_renorm_div = renormalize_summary_metrics(df_summ,varb="k_lin",norm_ref="median",method="div")
+    # apply functions (varb k_lin or gr)
+    df_summ_renorm_sub = renormalize_summary_metrics(df_summ,varb=varb,norm_ref="median",method="sub")
+    df_summ_renorm_div = renormalize_summary_metrics(df_summ,varb=varb,norm_ref="median",method="div")
 
     # save renormalized dataframes
-    df_summ_renorm_sub.to_csv(f"{work_dir}/summary/merged_summary_norm_sub_by_median.txt",sep="\t")
-    df_summ_renorm_div.to_csv(f"{work_dir}/summary/merged_summary_norm_div_by_median.txt",sep="\t")
+    df_summ_renorm_sub.to_csv(f"{work_dir}/summary/merged_summary_norm_sub_by_median_{varb}.txt",sep="\t")
+    df_summ_renorm_div.to_csv(f"{work_dir}/summary/merged_summary_norm_div_by_median_{varb}.txt",sep="\t")

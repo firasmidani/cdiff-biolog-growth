@@ -9,11 +9,12 @@ import seaborn as sns
 from matplotlib.ticker import MultipleLocator
 from matplotlib.patches import Rectangle
 from sklearn.preprocessing import MinMaxScaler
+from scipy.stats import pearsonr
 
 # import custom library
 from utils import *
 
-# READ DATA
+# READ DATA for selecting substrates based on normalized carrying capacity
 df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt")
 
 # summary metric of interest: 
@@ -30,6 +31,7 @@ df_long = df_long.median(param).reset_index()
 
 # pivot dataframe
 df_wide = df_long.pivot(index='Substrate',columns='Strain_ID',values=param).T
+df_medians_k_lin = df_wide.copy()
 
 # DESCRIBE MEDIAN CARRYING CAPACITY WITH HISTOGRAM
 
@@ -72,6 +74,27 @@ matches = list(matches[matches >= thresh_hit].index)
 
 # substrates that inhibit growth
 inhibitors = df_wide.T[df_wide.mean() < thresh_od_death].index.values
+
+# READ DATA FOR GROWTH RATES 
+
+# get growth rates of all isolates on substrats of interest
+df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_gr.txt")
+
+# summary metric of interest: 
+# subtraction-normalized carrying capacity in the untransformed lienar scale
+param = 'norm(gr)'
+
+# the following are variables needed for this figure
+varbs = ['Strain_ID','Substrate',param]
+
+# get median carrying capacity for each strain on each substrate
+df_long = df_summ.loc[:,varbs]
+df_long = df_long.groupby(['Strain_ID','Substrate'])
+df_long = df_long.median(param).reset_index()
+
+# pivot dataframe
+df_wide = df_long.pivot(index='Substrate',columns='Strain_ID',values=param).T
+df_medians_gr = df_wide.copy()
 
 # CREATE BOXPLOTS OF NORMALIZED CARRYING CAPACITIES FOR SUBSTRATES OF INTEREST
 
@@ -156,7 +179,7 @@ sns.boxplot(ax=axl_pos,**kwargs_plot,**kwargs_boxplot)
 sns.stripplot(ax=axl_pos,**kwargs_plot,**kwargs_stripplot)
 
 # adjust axes limits and ticks
-axl_pos.set_xlim([-0.099,0.799])
+axl_pos.set_xlim([-.199,0.599])
 axl_pos.set_ylim([-0.75,len(sorted_substrates)-0.25])
 axl_pos.xaxis.set_major_locator(MultipleLocator(0.1))
 axl_pos.tick_params(axis='both',which='both',length=0)
@@ -172,7 +195,7 @@ axl_pos.set_ylabel(None)
 axl_pos.text(
     x=axl_pos.get_center_xlim(),
     y=-2.5,
-    s='Normalized Carrying Capacity',
+    s='Normalized Growth Rate',
     ha='center',
     va='center',
     fontsize=12,
@@ -184,12 +207,11 @@ plt.setp(
     axl_pos,
     yticks=axl_pos.get_yticks(),
     yticklabels=tidy_labels(axl_pos.get_yticklabels())
-    )
-
-# ~~~~~~~~~~~~ positive growth coefficients of variation ~~~~~~~~~~~~
+)
+# ~~~~~~~~~~~~ positive growth standard deviation ~~~~~~~~~~~~
 
 # compute CoVs
-covs = toplot.apply(comp_covariance).loc[sorted_substrates]
+covs = toplot.apply(np.std).loc[sorted_substrates]
 
 # scale CoVs, for visualization purposes
 scaler = MinMaxScaler(feature_range=(0.2,1.0))
@@ -206,10 +228,10 @@ axc_pos.barh(
 )
 
 # adjust axes limits and ticks
-axc_pos.set_xlim([0,1.1])
+axc_pos.set_xlim([0,0.14])
 axc_pos.set_ylim([-0.75,len(covs_scaled)-0.25])
 axc_pos.yaxis.set_major_locator(MultipleLocator(1))
-plt.setp(axc_pos,xticks=[0,0.5,1])
+plt.setp(axc_pos,xticks=[0,0.07,0.14])
 plt.setp(axc_pos,yticklabels=[])
 axc_pos.tick_params(axis='x',which='major',length=0)
 axc_pos.tick_params(axis='y',which='major',color=(0,0,0,0.25),width=0.25,zorder=1)
@@ -220,7 +242,7 @@ axc_pos.thicken_spines()
 
 # adjust text and text label size
 axc_pos.enlarge_tick_labels(fontsize=12)
-axc_pos.set_centered_xlabel(y=-2.5,s='Coefficient of Variation')
+axc_pos.set_centered_xlabel(y=-2.5,s='Standard Deviation')
 
 # ~~~~~~~~~~~~ substrate color patches ~~~~~~~~~~~~
 
@@ -243,7 +265,7 @@ for y_position, substrate in enumerate(sorted_substrates):
         )
     )
 
-# adjust liits, remove ticks and speines
+# adjust limits, remove ticks and spienes
 axr_pos.set_xlim([0,1])
 axr_pos.set_ylim([-0.75,len(sorted_substrates)-0.25])
 plt.setp(axr_pos,xticks=[],yticks=[],xticklabels=[],yticklabels=[])
@@ -274,7 +296,7 @@ sns.boxplot(ax=axl_neg,**kwargs_plot,**kwargs_boxplot)
 sns.stripplot(ax=axl_neg,**kwargs_plot,**kwargs_stripplot)
 
 # adjust axes limits and ticks
-axl_neg.set_xlim([-0.399,0.399])
+axl_pos.set_xlim([-.199,0.599])
 axl_neg.set_ylim([-1,len(sorted_substrates)])
 axl_neg.xaxis.set_major_locator(MultipleLocator(0.1))
 axl_neg.tick_params(axis='both',which='both',length=0)
@@ -290,7 +312,7 @@ axl_neg.set_ylabel(None)
 axl_neg.text(
     x=axl_neg.get_center_xlim(),
     y=-2.5,
-    s='Normalized Carrying Capacity',
+    s='Normalized Growth Rate',
     ha='center',
     va='center',
     fontsize=12,
@@ -303,11 +325,10 @@ plt.setp(
     yticks=axl_neg.get_yticks(),
     yticklabels=tidy_labels(axl_neg.get_yticklabels())
 )
-
-# ~~~~~~~~~~~~ negative growth coefficients of variation ~~~~~~~~~~~~
+# ~~~~~~~~~~~~ negative growth standard deviation ~~~~~~~~~~~~
 
 # compute CoVs
-covs = toplot.apply(comp_covariance).loc[sorted_substrates]
+covs = toplot.apply(np.std).loc[sorted_substrates]
 
 # scale CoVs, for visualization purposes
 scaler = MinMaxScaler(feature_range=(0.2,1.0))
@@ -327,10 +348,10 @@ axc_neg.barh(
 )
 
 # adjust axes limits and ticks
-axc_neg.set_xlim([0,1.1])
+axc_neg.set_xlim([0,0.14])
 axc_neg.set_ylim([-1,len(covs_scaled)])
 axc_neg.yaxis.set_major_locator(MultipleLocator(1))
-plt.setp(axc_neg,xticks=[0,0.5,1])
+plt.setp(axc_neg,xticks=[0,0.07,0.14])
 plt.setp(axc_neg,yticklabels=[])
 axc_neg.tick_params(axis='x',which='major',length=0)
 axc_neg.tick_params(axis='y',which='major',color=(0,0,0,0.25),width=0.25,zorder=1)
@@ -341,7 +362,7 @@ axc_neg.thicken_spines()
 
 # adjust text and text label size
 axc_neg.enlarge_tick_labels(fontsize=12)
-axc_neg.set_centered_xlabel(y=-2.5,s='Coefficient of Variation')
+axc_neg.set_centered_xlabel(y=-2.5,s='Standard Deviation')
 
 # ~~~~~~~~~~~~ legend for substrate group colors ~~~~~~~~~~~~
 
@@ -402,5 +423,22 @@ axes[4,2].remove()
 
 # save plot
 plt.subplots_adjust(wspace=0.05,hspace=0.0)
-plt.savefig(f"{dir_figure}/main/figure-1-boxplots-norm-k-lin.png",dpi=600,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/supp/supp-figure-1-boxplots-growth-rate.png",dpi=600,bbox_inches='tight')
 plt.close()
+
+# ~~~~~~~~~~~~~ minor statistics ~~~~~~~~~~~~~
+
+# compute correlation between median normalized carrying capcaity and normalized growth rates
+
+# get median normalized K for each substrate of interest
+df_medians_k_lin = df_medians_k_lin.loc[:,matches].median()
+df_medians_k_lin = df_medians_k_lin.to_frame().rename(columns={0:'norm_k_lin'})
+
+# get median normalized r for each substrate of interest
+df_medians_gr = df_medians_gr.loc[:,matches].median()
+df_medians_gr = df_medians_gr.to_frame().rename(columns={0:'norm_gr'})
+
+# merge data and compute correlation
+df_medians = df_medians_k_lin.join(df_medians_gr)
+print()
+print(pearsonr(df_medians['norm_k_lin'],df_medians['norm_gr']))

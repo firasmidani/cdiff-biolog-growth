@@ -96,12 +96,12 @@ for ax, substrate in zip(np.ravel(axes),substrates):
 
     # adjust labels
     ax.set_xlabel(None)
-    ax.set_ylabel('Norm. Carrying Capacity', fontsize=12)
+    ax.set_ylabel('Normalized Carrying Capacity', fontsize=12)
     ax.set_title(f"{substrate} ({conc} mM)",fontsize=12, y=1.05)
 
 # adjust figure whitespace
 plt.subplots_adjust(hspace=0.7, wspace=0.5)
 
 # SAVE FIGURE
-plt.savefig(f"{dir_figure}/supp/supp-figure-4-stripplots-validation.png",dpi=300,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/supp/supp-figure-6-stripplots-validation.png",dpi=600,bbox_inches='tight')
 plt.close()

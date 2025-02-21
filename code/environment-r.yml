@@ -1,0 +1,11 @@
+name: cdiff-biolog-r
+channels:
+- bioconda
+- conda-forge
+dependencies:
+- r-base=4.3.3
+- r-dplyr=1.1.4
+- r-emmeans=1.10.7
+- r-lme4=1.1_35.5
+- r-matrix=1.6_5
+- r-xlsx=0.6.5

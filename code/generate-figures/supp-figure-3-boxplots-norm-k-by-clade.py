@@ -2,7 +2,6 @@
 
 # import off-the-shelf packages
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -10,7 +9,7 @@ import seaborn as sns
 from utils import *
 
 # READ DATA
-df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub.txt")
+df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt")
 
 # summary metric of interest: 
 # subtraction-normalized carrying capacity in the untransformed lienar scale
@@ -32,11 +31,25 @@ df_meta = df_summ.loc[:,['Strain_ID','Ribotype','Clade']].drop_duplicates()
 df_meta = df_meta.replace({'RTUnk':'Unknown'}).fillna('Unknown')
 df_meta = df_meta.set_index('Strain_ID')
 
-# substrates to plot
-substrates = ['D-Fructose','D-Ribose']
+# IDENTIFY SUBSTRATES OF INTEREST
+
+# substrates that support growth
+thresh_od_growth = 0.1 # OD must increase by at least 0.1
+thresh_od_death = -0.05 # OD must decrease by at least 0.05
+num_isolates = df_wide.shape[0] # number of isolates
+thresh_hit = np.floor(0.1*num_isolates) # OD increase must occur for at least 10% of isolates
+
+matches = lambda x: [1 if x >= thresh_od_growth else 0][0]
+matches = df_wide.map(matches).sum(0).sort_values(ascending=False)
+matches = list(matches[matches >= thresh_hit].index)
+
+# order substrates and clades
+df_medians = df_wide.loc[:,matches].median()
+sorted_substrates = df_medians.sort_values(ascending=False).index.values
+sorted_clades = [1,2,3,4,5]
 
 # define data
-data = df_wide.loc[:,substrates]
+data = df_wide.loc[:,sorted_substrates]
 data = data.unstack().to_frame().reset_index()
 data = data.rename(columns={'level_0':'Substrate',0:'Norm. K'})
 data = data.merge(df_meta,left_on='Strain_ID',right_index=True)
@@ -49,25 +62,23 @@ dict_ribotype_annot = dict_ribotype_annot.to_dict()['Color']
 
 # initialize figure
 fig,axes = init_figure(
-    figsize = [13,6],
+    figsize = [19,25],
     kwargs = {
-        'nrows':1,
-        'ncols':2,
+        'nrows':6,
+        'ncols':5,
         'sharey':False
         }
 )
 
-# plot each substrate in a sub-plot
-for ax, substrate in zip(np.ravel(axes), substrates):
+for ax, substrate in zip(np.ravel(axes), sorted_substrates):
 
-    # get data
     toplot = data[data.Substrate==substrate]
 
     sns.boxplot(
         data = toplot,
         x = "Clade",
         y = "Norm. K",
-        order = ['1','2','3','4','5'], 
+        order = sorted_clades, 
         width = 0.76,
         showfliers = False,
         showcaps = False,
@@ -77,18 +88,18 @@ for ax, substrate in zip(np.ravel(axes), substrates):
         ax = ax
     )
 
-    sns.swarmplot(
+    sns.stripplot(
         data = toplot,
         x = "Clade",
         y = "Norm. K",
         hue = "Ribotype",
         palette = dict_ribotype_annot,
-        order = ['1','2','3','4','5'], 
-        size = 9,
-        alpha = 1, 
+        order = sorted_clades,
+        s = 6,
+        alpha = 0.8, 
         edgecolor = 'black',
-        linewidth = 0.2,
-        zorder = 10,
+        linewidth = 0.1,
+        zorder = 10, 
         dodge = False, 
         legend = False, 
         ax = ax
@@ -103,26 +114,17 @@ for ax, substrate in zip(np.ravel(axes), substrates):
     ax.axhline(0,0,1,ls='--',lw=1,color='black')
 
     # set labels, title, and fontsize
-    ylabel = substrate.split('-')[-1]
-    ax.set_ylabel(f'OD(MM+{ylabel}) - OD(MM)', fontsize=15)
+    ax.set_title(tidy_label(substrate),fontsize=15,fontweight='bold',y=1.015)
     ax.set_xlabel('Phylogenetic Clade', fontsize=15)
-    ax.set_title(ylabel,fontsize=15,fontweight='bold',y=1.015)
+    ax.set_ylabel('Norm. K', fontsize=15)
     ax.enlarge_tick_labels(fontsize=15)
 
-# adjust limits
-axes[0].set_ylim([-0.025,0.725])
-axes[1].set_ylim([-0.075,0.375])
-
-# adjust spines and ticks
-for ax in axes:
-    ax.thicken_spines(lw=0,which='trb')
-    ax.thicken_spines(lw=2,which='l')
-    ax.axhline(0,0,1,lw=2,color='k')
-    ax.tick_params(width=0)
+# delete extra axes
+[fig.delaxes(axes[-1,ii]) for ii in [1,2,3,4]]
 
 # adjust whitespaces
-plt.subplots_adjust(wspace=0.25,hspace=0.0)
+plt.subplots_adjust(wspace=0.45,hspace=0.7)
 
 # SAVE FIGURE
-plt.savefig(f"{dir_figure}/supp/supp-figure-3-boxplots-norm-k-fructose-ribose.png",dpi=300,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/supp/supp-figure-3-boxplots-by-clade-norm-k.png",dpi=600,bbox_inches='tight')
 plt.close()

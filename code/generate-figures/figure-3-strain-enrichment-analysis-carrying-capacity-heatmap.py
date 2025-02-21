@@ -8,7 +8,7 @@ import seaborn as sns
 from utils import *
 
 # READ DATA
-df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median.txt")
+df_summ = read_csv("../../amiga-biolog/summary/merged_summary_norm_sub_by_median_k_lin.txt")
 
 # summary metric of interest: 
 # subtraction-normalized carrying capacity in the untransformed lienar scale
@@ -30,7 +30,8 @@ df_meta = df_summ.loc[:,['Strain_ID','Ribotype','Clade']].drop_duplicates()
 df_meta = df_meta.set_index('Strain_ID')
 
 # READ RESULTS OF  ENRICHMENT ANALYSIS
-df_results = read_csv('../../tables/strain_enrichment_analysis.tsv')
+df_results = read_csv('../../tables/strain_enrichment_analysis_norm_k_lin.tsv')
+df_results = df_results.replace({'LabAdapted':'Lab-adapted'})
 
 # PLOT ENRICHMENT ANALYSIS HEATMAP
 
@@ -112,6 +113,10 @@ g.ax_cbar.set_position([x0, y0*1.05, w, 0.03])
 # add titles and labels
 g.ax_cbar.set_title('Normalized Enrichment Score', fontsize=12, y=1.05)
 g.ax_heatmap.set_xlabel(None)
+g.ax_heatmap.set_ylabel(None)
+
+# tidy y-axis labels
+plt.setp(g.ax_heatmap,yticklabels=tidy_labels(g.ax_heatmap.get_yticklabels()))
 
 # adjust spines
 kwargs_spine = {'color':'k','lw':4,'zorder':2}
@@ -121,7 +126,7 @@ kwargs_spine = {'color':'k','lw':4,'zorder':2}
 [g.ax_cbar.axvline(ii,**kwargs_spine) for ii in list(g.ax_cbar.get_xlim())]
 
 # SAVE FIGURE
-plt.savefig(f"{dir_figure}/main/figure-3-strain-enrichment-heatmap.png",dpi=600,bbox_inches='tight')
+plt.savefig(f"{dir_figure}/main/figure-3-strain-enrichment-carrying-capcaity-heatmap.png",dpi=600,bbox_inches='tight',pad_inches=0.05)
 plt.close()
 
 
