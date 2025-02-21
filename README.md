@@ -75,6 +75,6 @@ Midani, F. S., Danhof, H. A., Mathew, N., Ardis, C. K., Garey, K. W., Spinler, J
 
 ## Funding
 
-This research was performed at the Baylor College of Medicine in Houston, Texas, and was supported by sevearl grants from the National Institutes of Health including T32DK007664, F32AI136404, U19AI157981, R01AI123278, and U01AI124290.
+This research was performed at the Baylor College of Medicine in Houston, Texas, and was supported by several grants from the National Institutes of Health including T32DK007664, F32AI136404, U19AI157981, R01AI123278, and U01AI124290.
 
 
